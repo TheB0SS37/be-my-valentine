@@ -10,6 +10,7 @@ section {
   padding: 0 clamp(2rem, 12vw, 22rem);
   display: grid;
   place-content: center;
+  overflow: hidden;
   p {
     word-wrap: break-word;
     box-sizing: border-box;
