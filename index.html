@@ -3,9 +3,107 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hello :)</title>
+    <link rel="stylesheet" href="styles.css" />
+    <title>Hello!</title>
   </head>
   <body>
-    Hello World
+    <section>
+      <h1>Hi Claire!</h1>
+    </section>
+
+    <section>
+      <p class="reveal-type" data-bg-color="#59574d" data-fg-color="white">
+        I just realized tonight that I missed a crucial part of Valentine's day
+      </p>
+    </section>
+
+    <section>
+      <p class="reveal-type" data-bg-color="#ffc2d1" data-fg-color="white">
+        I haven't actually asked you to be mine... whoops
+      </p>
+    </section>
+
+    <section>
+      <p class="reveal-type" data-bg-color="#BDE0FE" data-fg-color="white">
+        Sooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+        it's time to make things right!
+      </p>
+    </section>
+
+    <section>
+      <p class="reveal-type" data-bg-color="rgb(29,29,29)" data-fg-color="red">
+        CLAIRE
+      </p>
+    </section>
+
+    <section>
+      <p class="reveal-type" data-bg-color="#FFAFCC" data-fg-color="red">
+        Will you be my Valentine? :)
+      </p>
+    </section>
+
+    <section>
+      <p class="reveal-type" data-bg-color="#CDB4DB" data-fg-color="white">
+        Oh! And what's a Valentine's Day question if it doesn't come with a
+        gift. Here, the first of many :)
+      </p>
+    </section>
+
+    <section>
+      <img src="assets/IMG_7209.jpeg" />
+    </section>
   </body>
+  <script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
+  <script src="https://assets.codepen.io/16327/SplitText3.min.js"></script>
+  <script src="https://assets.codepen.io/16327/ScrambleTextPlugin3.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/split-type"></script>
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+
+    const splitTypes = document.querySelectorAll(".reveal-type");
+
+    splitTypes.forEach((char, i) => {
+      const bg = char.dataset.bgColor;
+      const fg = char.dataset.fgColor;
+
+      const text = new SplitType(char, {
+        types: "words,chars",
+        linesClass: "char++",
+      });
+
+      gsap.fromTo(
+        text.chars,
+        {
+          color: bg,
+        },
+        {
+          color: fg,
+          duration: 0.3,
+          stagger: 0.02,
+          scrollTrigger: {
+            trigger: char,
+            start: "top 80%",
+            end: "top 40%",
+            scrub: true,
+            markers: false,
+            toggleActions: "play play reverse reverse",
+          },
+        }
+      );
+    });
+
+    const lenis = new Lenis();
+
+    lenis.on("scroll", (e) => {
+      console.log(e);
+    });
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+  </script>
 </html>
