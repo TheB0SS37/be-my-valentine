@@ -45,17 +45,11 @@ section {
   &:nth-of-type(6) {
     background: #ffafcc;
     color: white;
-    p {
-      font-size: 72px;
-    }
   }
 
   &:nth-of-type(7) {
     background: #cdb4db;
     color: white;
-    p {
-      font-size: 72px;
-    }
   }
 }
 
